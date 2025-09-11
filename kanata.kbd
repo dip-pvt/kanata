@@ -1,0 +1,21 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  f d j k
+)
+
+(deflayer base
+  ;; 'f' as lctrl when held, 'f' when tapped
+  (tap-hold 200 200 f lctrl)
+
+  ;; 'd' as lalt when held, 'd' when tapped
+  (tap-hold 200 200 d lalt)
+
+  ;; 'j' as rctrl when held, 'j' when tapped
+  (tap-hold 200 200 j rctrl)
+
+  ;; 'k' as ralt when held, 'k' when tapped
+  (tap-hold 200 200 k ralt)
+)
