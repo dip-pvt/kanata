@@ -1,21 +1,32 @@
-(defcfg
-  process-unmapped-keys yes
-)
-
 (defsrc
-  f d j k
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
 )
 
-(deflayer base
-  ;; 'f' as lctrl when held, 'f' when tapped
-  (tap-hold 200 200 f lctrl)
+(defalias
+  caps-nav (tap-hold-press 200 200 _ (layer-while-held navigation))
 
-  ;; 'd' as lalt when held, 'd' when tapped
-  (tap-hold 200 200 d lalt)
+  f-mod (tap-hold-press 200 200 f lctl)
+  d-mod (tap-hold-press 200 200 d lalt)
+  j-mod (tap-hold-press 200 200 j rctl)
+  k-mod (tap-hold-press 200 200 k ralt)
+)
 
-  ;; 'j' as rctrl when held, 'j' when tapped
-  (tap-hold 200 200 j rctrl)
+(deflayer qwerty
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  @caps-nav a  s @d-mod @f-mod g    h @j-mod @k-mod l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
 
-  ;; 'k' as ralt when held, 'k' when tapped
-  (tap-hold 200 200 k ralt)
+(deflayer navigation
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    left down up   rght _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _
 )
