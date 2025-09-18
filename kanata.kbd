@@ -6,13 +6,18 @@
   lctl lmet lalt           spc            ralt rmet rctl
 )
 
+(defvar
+  R-keys (y u i o p [ ] \ h j k l ; ' n m , . /)
+  L-keys (q w e r t a s d f g z x c v b)
+)
+
 (defalias
   caps-nav (tap-hold-press 200 200 _ (layer-while-held navigation))
 
-  f-mod (tap-hold-press 200 200 f lctl)
-  d-mod (tap-hold-press 200 200 d lalt)
-  j-mod (tap-hold-press 200 200 j rctl)
-  k-mod (tap-hold-press 200 200 k ralt)
+  f-mod (tap-hold-release-keys 200 200 f lctl $R-keys)
+  d-mod (tap-hold-release-keys 200 200 d lalt $R-keys)
+  j-mod (tap-hold-release-keys 200 200 j rctl $L-keys)
+  k-mod (tap-hold-release-keys 200 200 k ralt $L-keys)
 )
 
 (deflayer qwerty
